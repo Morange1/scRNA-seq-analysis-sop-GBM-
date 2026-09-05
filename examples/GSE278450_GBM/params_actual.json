@@ -1,0 +1,66 @@
+{
+  "_说明": "GSE278450 (Couturier 2022, Neuro-Oncology) 真实跑通的参数附例。展示本 skill 参数在 22 例 GBM 实际数据上的取值。新数据可对比此附例调整。",
+  "dataset": "GSE278450",
+  "reference": "Couturier CP, et al. Neuro-Oncology 2022;24(9):1494-1508. PMID 35416251",
+  "samples": 22,
+  "input_cells": 91336,
+  "input_genes": 36116,
+  "coding_filter_genes": 19482,
+  "post_coding_genes": 18068,
+  "post_qc_cells": 90609,
+  "post_qc_genes": 16684,
+
+  "qc": {
+    "min_genes": 200,
+    "max_genes": 5000,
+    "max_pct_mito": 10,
+    "max_total_counts": 40000,
+    "min_cells": 3,
+    "_result": "过滤 727 细胞 (mito>10%)，其余 QC 良好"
+  },
+
+  "normalize": { "target_sum": 10000, "log1p": true },
+
+  "hvg": { "n_top_genes": 2000, "flavor": "seurat", "batch_key": "sample" },
+
+  "integration": {
+    "method": "bbknn",
+    "batch_key": "sample",
+    "n_pcs": 30,
+    "neighbors_within_batch": 10,
+    "_result": "9 个 round1 cluster, 谱系分离开净, 无明显样本主导"
+  },
+
+  "pca": { "n_comps": 50, "scale_max": 10 },
+
+  "leiden": {
+    "round1_resolution": 0.3,
+    "immune_sub_resolution": 0.5,
+    "tumor_mye_resolution": 0.4,
+    "flavor": "igraph",
+    "n_iterations": 2,
+    "_round1_result": "9 cluster -> Tumor(46352)/Myeloid(34369)/Oligo(8865)/TNK(704)"
+  },
+
+  "marker_threshold": { "log_val": 0.5 },
+
+  "immune_extraction_result": {
+    "_note": "CD3 判定 T; NK marker + CD3阴 判定 NK; CD3+强NK+ 判定 NKT",
+    "T": 557,
+    "NK": 1002,
+    "NKT": 429
+  },
+
+  "subcluster_results": {
+    "_note": "谱系内独立重聚类(HVG2000+PCA30, T/NK用res0.5, 肿瘤/髓系用res0.4)",
+    "tumor_states": { "AC": 21260, "MES": 14212, "NPC": 8137, "OPC": 2743 },
+    "myeloid_cats": { "Mono/Mac": 21904, "Microglia": 10885, "Proliferating": 1580 },
+    "T_cats": { "CD8": 317, "CD4": 163, "Memory": 64, "Treg": 13 },
+    "NK_cats": { "CD56bright": 508, "Cytotoxic": 363, "Activated": 73, "CD56dim": 58 }
+  },
+
+  "target_genes": {
+    "_note": "双靶点 CAR 关注基因。本数据结论: IL13RA2+PILRA 为更优 AND-gate 组合",
+    "genes": ["CD70", "IL13RA2", "PILRA"]
+  }
+}

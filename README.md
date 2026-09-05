@@ -16,6 +16,8 @@ skill/
 │   ├── cluster_annotate.py # 两轮聚类 + marker 注释（BBKNN/谱系内细分）
 │   ├── target_analysis.py  # 靶点分析：pseudobulk/共表达/AND-gate安全性
 │   └── plot_utils.py       # 统一画图：分群/表达/热图/dotplot（读 palette.json）
+├── examples/
+│   └── GSE278450_GBM/      # 真实跑通的附例（参数 + 结果摘要 + 双靶点结论）
 └── README.md
 ```
 
