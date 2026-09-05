@@ -10,6 +10,7 @@
 ```
 skill/
 ├── SOP.md              # 指令式操作流程（照做即可，含参数/坑/准则）
+├── design_notes.md     # GBM 肿瘤特异性设计说明（为什么这样聚类/注释，换数据的判断点）
 ├── config/
 │   ├── params.json     # 所有参数集中管理（QC/HVG/聚类/marker阈值/靶基因）
 │   └── palette.json    # 统一配色方案（分群三套 + 表达 colormap）
