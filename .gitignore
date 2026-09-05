@@ -1,0 +1,33 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# ===== 大数据文件 (不入库) =====
+*.h5ad
+*.h5
+*.tar
+*.gz
+*.part
+00_data/
+02_results/
+data/
+*.tsv.gz
+*.mtx.gz
+
+# ===== 图片/中间产物 (可选, 若不想入库) =====
+# 如要保留图可注释下面几行
+figures_*/
+*.png
+
+# ===== 系统 =====
+.DS_Store
+Thumbs.db
+
+# ===== IDE =====
+.idea/
+.vscode/
+*.swp

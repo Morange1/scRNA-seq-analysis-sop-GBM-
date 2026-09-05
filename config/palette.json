@@ -1,0 +1,56 @@
+{
+  "_说明": "GBM/肿瘤微环境单细胞分析 - 统一配色方案。三套配色集中管理，写图时直接引用，不再重新设计颜色。",
+
+  "palette_A_lineage": {
+    "_note": "配色A：全局分群 UMAP（按谱系分组）。final_celltype 17 类。",
+    "Tumor-AC": "#d7301f",
+    "Tumor-MES": "#fc4e2a",
+    "Tumor-NPC": "#a63603",
+    "Tumor-OPC": "#fd8d3c",
+    "Myeloid-Mono/Mac": "#4292c6",
+    "Myeloid-Microglia": "#08519c",
+    "Myeloid-Proliferating": "#6baed6",
+    "T-CD8": "#1a7a1a",
+    "T-CD4": "#4daf4a",
+    "T-Memory": "#7bd77b",
+    "T-Treg": "#a5d6a5",
+    "NK-CD56bright": "#7b2cb5",
+    "NK-Cytotoxic": "#ab5bd6",
+    "NK-Activated": "#9e5fb5",
+    "NK-CD56dim": "#c9a0dc",
+    "NKT": "#757575",
+    "Oligo": "#e6ab02"
+  },
+
+  "palette_B_major": {
+    "_note": "配色B：大谱系简化色。",
+    "Tumor": "#e41a1c",
+    "Myeloid": "#377eb8",
+    "T": "#4daf4a",
+    "NK": "#984ea3",
+    "Oligo": "#ff7f00"
+  },
+
+  "palette_C_subtype_highcontrast": {
+    "_note": "配色C：各谱系注释级分群（高区分度）。同一谱系内子状态用完全不同颜色，避免同色系难分辨。",
+    "tumor": {
+      "AC": "#e41a1c", "MES": "#ff7f00", "NPC": "#377eb8", "OPC": "#4daf4a"
+    },
+    "myeloid": {
+      "Mono/Mac": "#984ea3", "Microglia": "#08519c", "Proliferating": "#e78ac3"
+    },
+    "T": {
+      "CD8": "#1b7837", "CD4": "#7fc97f", "Memory": "#ffff33", "Treg": "#a6cee3"
+    },
+    "NK": {
+      "CD56bright": "#67001f", "Cytotoxic": "#fdae61", "Activated": "#40004b", "CD56dim": "#1f78b4"
+    }
+  },
+
+  "expression_cmap": {
+    "_note": "配色D：靶基因表达图 colormap。高饱和蓝绿黄渐变。",
+    "cmap": "viridis",
+    "label": "log1p expression",
+    "0_means": "not expressed"
+  }
+}

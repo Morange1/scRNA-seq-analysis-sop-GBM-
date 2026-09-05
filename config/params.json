@@ -1,0 +1,57 @@
+{
+  "_说明": "GBM/肿瘤微环境单细胞分析 - 默认参数配置。可复用：同一流程换数据源时只需改此处 + 各脚本的数据路径。",
+
+  "qc": {
+    "min_genes": 200,
+    "max_genes": 5000,
+    "max_pct_mito": 10,
+    "max_total_counts": 40000,
+    "min_cells": 3,
+    "_note": "单细胞 QC 阈值。mito% 依线粒体基因前缀 MT-/mt- 计算。"
+  },
+
+  "normalize": {
+    "target_sum": 10000,
+    "log1p": true,
+    "_note": "total-count 归一化到 1e4，再 log1p。log1p 用于单细胞表达图（0=不表达）。"
+  },
+
+  "hvg": {
+    "n_top_genes": 2000,
+    "flavor": "seurat",
+    "batch_key": "sample",
+    "_note": "高变基因，batch_key 用于按样本计算 HVG。"
+  },
+
+  "integration": {
+    "method": "bbknn",
+    "batch_key": "sample",
+    "n_pcs": 30,
+    "neighbors_within_batch": 10,
+    "_note": "BBKNN 批次整合。若只跨少量样本可用 harmony。"
+  },
+
+  "pca": {
+    "n_comps": 50,
+    "scale_max": 10
+  },
+
+  "leiden": {
+    "round1_resolution": 0.3,
+    "immune_sub_resolution": 0.5,
+    "tumor_mye_resolution": 0.4,
+    "flavor": "igraph",
+    "n_iterations": 2,
+    "_note": "两轮聚类。round1 低分辨率分大谱系；谱系内细分用更高分辨率。"
+  },
+
+  "marker_threshold": {
+    "log_val": 0.5,
+    "_note": "免疫/细胞类型 marker 判定的 log1p 阈值。"
+  },
+
+  "target_genes": {
+    "_note": "双靶点 CAR 分析关注的靶基因。",
+    "genes": ["CD70", "IL13RA2", "PILRA"]
+  }
+}
