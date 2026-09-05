@@ -38,6 +38,22 @@ skill/
   - 跨谱系/基因比较热图用 **z-score**（消除量级，可比）
 - **AND-gate 双靶点评估**：pseudobulk CPM（消 dropout）+ Fisher 共表达 + 双阳窗口(肿瘤 vs 非肿瘤)安全性
 
+## 参数与真实附例
+
+### `config/params.json`（默认参数）
+所有分析参数的**唯一权威来源**（QC 阈值 / normalize / HVG / 整合 / Leiden 分辨率 / marker 阈值 / 靶基因）。
+换数据集时**优先改这里**，再改各脚本的数据路径。各脚本已按 `params.json` 结构编写，读同一份配置避免参数散落。
+
+### `examples/GSE278450_GBM/`（真实跑通附例）
+一个**完整跑通的参考案例**，展示本 skill 在真实 22 例 GBM 上"参数取值 → 结果产出 → 配色应用 → 双靶点结论"全过程：
+
+| 文件 | 内容 |
+|------|------|
+| `params_actual.json` | GSE278450 真实参数取值 + 每阶段的真实细胞/基因数（91,336 → 90,609 → 17 类）|
+| `results_summary.md` | 最终分群表、配色使用示例、log1p vs z-score 用法、双靶点 AND-gate 结论（IL13RA2+PILRA 更优）、复盘踩坑 |
+
+> 用法建议：新数据集先用默认 `params.json` 跑，遇到问题对照附例的"参数取值与结果合理性"，看产出是否在合理范围。
+
 ## 参考数据集
 
 本规范基于 **GSE278450**（Couturier et al. 2022, Neuro-Oncology, 22 例 GBM）分析沉淀。
